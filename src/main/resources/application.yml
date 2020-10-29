@@ -1,0 +1,4 @@
+logging:
+  level:
+    com.adamkorzeniak: DEBUG
+    org.springframework.web: DEBUG
