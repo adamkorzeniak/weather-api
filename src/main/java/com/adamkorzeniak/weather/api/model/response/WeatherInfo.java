@@ -1,4 +1,4 @@
-package com.adamkorzeniak.weather.interfaces.model.response;
+package com.adamkorzeniak.weather.api.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package com.adamkorzeniak.weather.interfaces.model.response;
+package com.adamkorzeniak.weather.api.model.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -8,14 +8,14 @@ import java.time.OffsetDateTime;
 
 @Getter
 @Setter
-public class AvailableCalls {
+public class CallRateLimits {
 
     @JsonProperty("date")
     private OffsetDateTime date;
 
     @JsonProperty("rateLimit")
-    private String rateLimit;
+    private Long rateLimit;
 
     @JsonProperty("remainingRateLimit")
-    private String remainingRateLimit;
+    private Long remainingRateLimit;
 }
