@@ -1,12 +1,10 @@
-logging:
-  level:
-    com.adamkorzeniak: DEBUG
-    org.springframework.web: DEBUG
+spring:
+  profiles:
+    active: local
+    include: application-${spring.profiles.active}.yml
 
 service:
   accuweather:
-    url: http://dataservice.accuweather.com
-    apiKey: key_temporary_placeholder
     configuration:
       language: pl-pl
       metric: true

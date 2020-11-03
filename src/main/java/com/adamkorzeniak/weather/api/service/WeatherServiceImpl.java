@@ -88,6 +88,11 @@ public class WeatherServiceImpl implements WeatherService {
         temperature.setTemperatureText(buildTemperatureText(temperature.getValue(), temperature.getUnit()));
         result.setTemperature(temperature);
 
+        CurrentWeatherInfo weatherInfo = new CurrentWeatherInfo();
+        weatherInfo.setDescription(data.getWeatherText());
+        weatherInfo.setPrecipitation(data.getHasPrecipitation());
+        result.setWeatherInfo(weatherInfo);
+
         DataWithContext<Weather> weatherWithContext = new DataWithContext<>(result);
         weatherWithContext.setRateLimit(weather.getRateLimit());
         weatherWithContext.setRemainingRateLimit(weather.getRemainingRateLimit());

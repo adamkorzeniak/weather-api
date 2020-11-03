@@ -1,0 +1,12 @@
+logging:
+  level:
+    com.adamkorzeniak.weather: DEBUG
+    org.springframework.web: DEBUG
+
+server:
+  port: 8080
+
+service:
+  accuweather:
+    url: http://localhost:8999
+    apiKey: temporary_placeholder
