@@ -3,15 +3,17 @@ logging:
     com.adamkorzeniak: DEBUG
     org.springframework.web: DEBUG
 
-server:
-  timezone: Poland
-
 service:
   accuweather:
     url: http://dataservice.accuweather.com
     apiKey: key_temporary_placeholder
+    configuration:
+      language: pl-pl
+      metric: true
     path:
-      locations: /locations/v1
+      postalCodeSearch:   /locations/v1/postalcodes/search
+      currentConditions:  /currentconditions/v1/{locationKey}
+      forecasts:          /forecasts/v1/daily/5day/{locationKey}
     header:
       rate-limit: RateLimit-Limit
       remaining-rate-limit: RateLimit-Remaining

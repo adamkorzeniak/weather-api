@@ -6,17 +6,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TemperatureMetric {
+public class AccuWeatherInfo {
 
-    @JsonProperty("Value")
-    private Double value;
+    @JsonProperty("IconPhrase")
+    private String iconPhrase;
 
-    //TODO: Consider changing to enum, list of units is in documentation
-    @JsonProperty("Unit")
-    private String unit;
+    @JsonProperty("HasPrecipitation")
+    private Boolean hasPrecipitation;
 }

@@ -6,16 +6,18 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Temperatures {
+public class AccuTemperatures {
 
     @JsonProperty("Minimum")
-    private TemperatureMetric minimum;
+    private AccuTemperatureMetric minimum;
 
     @JsonProperty("Maximum")
-    private TemperatureMetric maximum;
+    private AccuTemperatureMetric maximum;
 }

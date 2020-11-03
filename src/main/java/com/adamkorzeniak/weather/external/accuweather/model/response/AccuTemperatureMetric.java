@@ -1,23 +1,23 @@
 package com.adamkorzeniak.weather.external.accuweather.model.response;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Location {
+public class AccuTemperatureMetric {
 
-    @JsonProperty("Key")
-    private String key;
+    @JsonProperty("Value")
+    private Double value;
 
-    @JsonProperty("LocalizedName")
-    private String localizedName;
-
-    @JsonProperty("EnglishName")
-    private String englishName;
+    @JsonProperty("Unit")
+    private String unit;
 }

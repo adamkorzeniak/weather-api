@@ -5,16 +5,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-//TODO: Consider extending City and renaming classes
-public class LocationDetails extends Location {
-
-    @JsonProperty("Key")
-    private String key;
+public class AccuLocationDetails extends AccuLocation {
 
     @JsonProperty("Type")
     private String type;
@@ -22,18 +20,12 @@ public class LocationDetails extends Location {
     @JsonProperty("Rank")
     private Integer rank;
 
-    @JsonProperty("LocalizedName")
-    private String localizedName;
-
-    @JsonProperty("EnglishName")
-    private String englishName;
-
     @JsonProperty("Country")
-    private Region country;
+    private AccuRegion country;
 
     @JsonProperty("AdministrativeArea")
-    private Region administrativeArea;
+    private AccuRegion administrativeArea;
 
     @JsonProperty("ParentCity")
-    private Location parentCity;
+    private AccuLocation parentCity;
 }

@@ -5,30 +5,25 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.time.OffsetDateTime;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class DailyForecast {
+public class AccuDailyForecast {
 
-    //TODO: Consider removing and leave epochDate
-    @JsonProperty("Date")
-    private OffsetDateTime date;
-
-    //TODO: COnsider changing to Instant
     @JsonProperty("EpochDate")
     private Long epochDate;
 
     @JsonProperty("Temperature")
-    private Temperatures temperature;
+    private AccuTemperatures temperature;
 
     @JsonProperty("Day")
-    private WeatherInfo day;
+    private AccuWeatherInfo day;
 
     @JsonProperty("Night")
-    private WeatherInfo night;
+    private AccuWeatherInfo night;
 
 }
