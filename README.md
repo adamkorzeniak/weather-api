@@ -92,7 +92,7 @@ http://localhost:8080/api/v0/weather/current?postalCode=00-001
 
 http://localhost:8080/api/v0/weather/forecast?postalCode=00-001
 
-### Response Headers
+#### Response Headers
 
 Response contains headers `RateLimit` and `RateLimitRemaining` which inform about daily limit and remaining daily limit of AccuWeather Service API calls.
 Those don't equal to number of requests to this API as one request generates one or more AccuWeather API requests.
