@@ -58,7 +58,7 @@ mvn clean package -DskipTests=true
 
 - Open command line and change directory to directory where `weather-api-0.1.0.jar` is located.
 - Run `java -jar weather-api-0.1.0.jar` to start application. 
-You can provide option `-Dspring.profiles.active=XXX` to declare which environment properties should be included (i.e `-Dspring.profiles.active=XXX` for production deployment).
+You can provide option `-Dspring.profiles.active=XXX` to declare which environment properties should be included (i.e `-Dspring.profiles.active=prod` for production deployment).
 
 Default local deployment is currently configured to require mocks running on `http://localhost:8999`
 
