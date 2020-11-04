@@ -9,4 +9,4 @@ server:
 service:
   accuweather:
     url: http://localhost:8999
-    apiKey: temporary_placeholder
+    apiKey: wyIRMNsBMaPwFCmVveY9sErGAWdIuhZq

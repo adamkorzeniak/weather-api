@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "79bf42db-2ac8-4120-b427-b4046b0e8e42",
+		"name": "Weather API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Current Conditions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v0/weather/current?postalCode=00-001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v0",
+						"weather",
+						"current"
+					],
+					"query": [
+						{
+							"key": "postalCode",
+							"value": "00-001"
+						}
+					]
+				},
+				"description": "Get Current Conditions"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Forecast",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v0/weather/forecast?postalCode=00-001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v0",
+						"weather",
+						"forecast"
+					],
+					"query": [
+						{
+							"key": "postalCode",
+							"value": "00-001"
+						}
+					]
+				},
+				"description": "Get Current Conditions"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

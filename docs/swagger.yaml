@@ -1,0 +1,142 @@
+swagger: "2.0"
+info:
+  title: "Weather API"
+  version: "0.1.0"
+  description: "Weather API providing current conditions and forecasts based on Postal Code."
+  contact:
+    email: "korzeniak.adam@gmail.com"
+host: "localhost:8080"
+basePath: "/api/v0/weather"
+tags:
+- name: "Weather"
+  description: "Weather information"
+schemes:
+- "http"
+paths:
+  /current:
+    get:
+      tags:
+      - "Weather"
+      summary: "Get Current Condition for Postal Code"
+      description: "Display current weather conditions for provided Postal Code"
+      operationId: "getCurrentConditions"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "postalCode"
+        in: "query"
+        description: "Postal Code for which we need current weather conditions"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Returns current conditions"
+          schema:
+            $ref: "#/definitions/Weather"
+          headers:
+            RateLimit:
+              description: "Daily limit of AccuWeather API requests. It doesn't equal number of requests to this API as one request generates one or more AccuWeather API requests."
+              type: string
+            RateLimitRemaining:
+              description: "Daily remaining limit of AccuWeather API requests. It doesn't equal number of requests to this API as one request generates one or more AccuWeather API requests."
+              type: string
+        "500":
+          description: "Error occured"
+          schema:
+            $ref: "#/definitions/Error"
+  /forecast:
+    get:
+      tags:
+      - "Weather"
+      summary: "Get Forecast for Postal Code"
+      description: "Display forecast for provided Postal Code"
+      operationId: "getForecast"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "postalCode"
+        in: "query"
+        description: "Postal Code for which we need forecast"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "Returns forecast"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Forecast"
+          headers:
+            RateLimit:
+              description: "Daily limit of AccuWeather API requests. It doesn't equal number of requests to this API as one request generates one or more AccuWeather API requests."
+              type: string
+            RateLimitRemaining:
+              description: "Daily remaining limit of AccuWeather API requests. It doesn't equal number of requests to this API as one request generates one or more AccuWeather API requests."
+              type: string
+        "500":
+          description: "Error occured"
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  Error:
+    type: object
+    properties:
+      code: 
+        type: string
+      title: 
+        type: string
+      message: 
+        type: string
+  Forecast:
+    type: object
+    properties:
+      date: 
+        type: string
+        format: date
+      temperature: 
+        type: object
+        properties: 
+          minimum: 
+            type: number
+          maximum: 
+            type: integer
+            format: int32
+          unit: 
+            type: string
+          minimumTemperatureText: 
+            type: string
+          maximumTemperatureText: 
+            type: string
+      weather: 
+        type: object
+        properties: 
+          dayDescription: 
+            type: string
+          dayPrecipitation: 
+            type: boolean
+          nightDescription: 
+            type: string
+          nightPrecipitation: 
+            type: boolean
+  Weather:
+    type: object
+    properties:
+      date: 
+        type: string
+      temperature: 
+        type: object
+        properties: 
+          value: 
+            type: integer
+            format: int32
+          unit: 
+            type: string
+          temperatureText: 
+            type: string
+      weather: 
+        type: object
+        properties: 
+          description: 
+            type: string
+          precipitation: 
+            type: boolean

@@ -9,4 +9,4 @@ server:
 service:
   accuweather:
     url: http://dataservice.accuweather.com
-    apiKey: temporary_placeholder
+    apiKey: wyIRMNsBMaPwFCmVveY9sErGAWdIuhZq

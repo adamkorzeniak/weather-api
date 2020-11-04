@@ -24,8 +24,8 @@ import java.util.stream.Collectors;
 @Service
 public class WeatherServiceImpl implements WeatherService {
 
-    private static final String SEARCH_BY_POSTAL_CODE_DESC = "Search By Postal Code";
-    private static final String GET_CURRENT_CONDITIONS_DESC = "Get Current Conditions";
+    private static final String SEARCH_BY_POSTAL_CODE_DESCRIPTION = "Search By Postal Code";
+    private static final String GET_CURRENT_CONDITIONS_DESCRIPTION = "Get Current Conditions";
     private static final String GET_FORECAST_DESC = "Get Forecast";
 
     private final AccuWeatherService accuWeatherService;
@@ -50,27 +50,27 @@ public class WeatherServiceImpl implements WeatherService {
     private String getLocationKey(String postalCode) {
         ResponseEntity<List<AccuLocationDetails>> response = accuWeatherService.getLocation(postalCode);
         if (response.getBody() == null) {
-            throw new AccuWeatherEmptyResponseException(SEARCH_BY_POSTAL_CODE_DESC);
+            throw new AccuWeatherEmptyResponseException(SEARCH_BY_POSTAL_CODE_DESCRIPTION);
         }
 
         return response.getBody().stream()
                 .max(Comparator.comparing(AccuLocationDetails::getRank))
                 .map(AccuLocationDetails::getKey)
                 .orElseThrow(
-                        () -> new AccuWeatherResponseMissingContentException(SEARCH_BY_POSTAL_CODE_DESC, "field key"));
+                        () -> new AccuWeatherResponseMissingContentException(SEARCH_BY_POSTAL_CODE_DESCRIPTION));
     }
 
     private DataWithContext<AccuWeather> getWeather(String locationKey) {
         ResponseEntity<List<AccuWeather>> response = accuWeatherService.getCurrentConditions(locationKey);
         if (response.getBody() == null) {
-            throw new AccuWeatherEmptyResponseException(GET_CURRENT_CONDITIONS_DESC);
+            throw new AccuWeatherEmptyResponseException(GET_CURRENT_CONDITIONS_DESCRIPTION);
         }
 
         AccuWeather weather = response.getBody()
                 .stream()
                 .findFirst()
                 .orElseThrow(
-                        () -> new AccuWeatherResponseMissingContentException(GET_CURRENT_CONDITIONS_DESC, "any elements"));
+                        () -> new AccuWeatherResponseMissingContentException(GET_CURRENT_CONDITIONS_DESCRIPTION));
 
         DataWithContext<AccuWeather> result = new DataWithContext<>(weather);
         enrichHeaders(result, response.getHeaders());

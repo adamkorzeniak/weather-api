@@ -39,8 +39,8 @@ public class WeatherController {
 
     private <T> ResponseEntity<T> buildResponse(DataWithContext<T> result) {
         HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("rateLimit", result.getRateLimit());
-        responseHeaders.set("rateLimitRemaining", result.getRemainingRateLimit());
+        responseHeaders.set("RateLimit", result.getRateLimit());
+        responseHeaders.set("RateLimitRemaining", result.getRemainingRateLimit());
 
         return ResponseEntity.ok().headers(responseHeaders).body(result.getData());
     }
